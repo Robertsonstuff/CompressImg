@@ -3,6 +3,10 @@ import PIL
 import os
 import glob
 
+subdirectory = 'C:/full/file/path'
+
+a = input("I need the full file path on where to compress? ")
+
 def compress_images(directory=False, quality=30):
     # from current directory
     if directory:
@@ -17,8 +21,9 @@ def compress_images(directory=False, quality=30):
         # 5. Open every image:
         img = Image.open(image)
         # 6. Resize image to 800x800
-        size_image = img.thumbnail((800, 800))
+        b = (800, 800)
+        size_image = img.thumbnail(b)
         # 7. Compress every image and save it with a new name:
-        size_image.save("Compressed_"+image, optimize=True, quality=quality)
+        img.save("Compressed-"+image, optimize=True, quality=quality)
 
-compress_images()
+compress_images(directory=subdirectory)
