@@ -15,6 +15,11 @@ def compress_images(directory=False, quality=30):
     files = os.listdir()
     # 3. Extract all of the images:
     images = [file for file in files if file.endswith(('jpg', 'png'))]
+    Folder = "Compressed"
+    mode = 0o666
+    path = os.path.join(a, Folder)
+    #makes the folder called compressed 
+    os.makedirs(path, mode)
     # 4. Loop over every image:
     for image in images:
         print(f"Compressing {image} now...")
@@ -24,6 +29,6 @@ def compress_images(directory=False, quality=30):
         b = (800, 800)
         size_image = img.thumbnail(b)
         # 7. Compress every image and save it with a new name:
-        img.save("Compressed-"+image, optimize=True, quality=quality)
+        img.save(Folder+"/"+image, optimize=True, quality=quality)
 
 compress_images(directory=subdirectory)
